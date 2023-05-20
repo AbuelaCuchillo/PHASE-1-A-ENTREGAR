@@ -1,53 +1,51 @@
 import Aircraft
-import Flight
 import Airline
-Z = Airline.Airline()
-X = Aircraft.Aircraft()
-Y= Flight.Flight()
+import Flight
+
 def createXicaAirline ():
-    '''Function createXicaAirline
+    """ Function createXicaAirline
     ==============================
     This function has no input parameters
     Returns an airline with 2 aircraft and 4 flights
-    '''
-    '''creates first aircraft with some values'''
+    """
+    # creates first aircraft with some values
     AC1 = Aircraft.Aircraft()
-    AC1.callsign = "EC234"
-    AC1.type = "A320"
-    AC1.seats = 200
+    AC1.Callsign = "EC234"
+    AC1.Type = "A320"
+    AC1.MaxCap = 280
     # creates a second aircraft with other values
     AC2 = Aircraft.Aircraft()
-    AC2.callsign = "EC504"
-    AC2.type = "A321"
-    AC2.seats = 300
+    AC2.Callsign = "EC504"
+    AC2.Type = "A321"
+    AC2.MaxCap = 310
     # creates first flight with some values
     FL1 = Flight.Flight()
-    FL1.dep = "Barcelona"
-    FL1.arr = "Palma"
-    FL1.time_dep = 860
-    FL1.time_arr = 1160
-    FL1.passengers = 54
+    FL1.DepAirport = "Barcelona"
+    FL1.ArrAirport = "Budapest"
+    FL1.DepTimeM = 8*60
+    FL1.ArrTimeM = 11*60
+    FL1.Pax = 54
     # creates second flight with some values
     FL2 = Flight.Flight()
-    FL2.dep = "Barcelona"
-    FL2.arr = "Menorca"
-    FL2.time_dep = 960
-    FL2.time_arr = 12.560
-    FL2.passengers = 154
+    FL2.DepAirport = "Barcelona"
+    FL2.ArrAirport = "Istambul"
+    FL2.DepTimeM = 9*60
+    FL2.ArrTimeM = 12.5*60
+    FL2.Pax = 154
     # creates third flight with some values
     FL3 = Flight.Flight()
-    FL3.dep = "Palma"
-    FL3.arr = "Barcelona"
-    FL3.time_dep = 1760
-    FL3.time_arr = 19.2560
-    FL3.passengers = 140
+    FL3.DepAirport = "Istambul"
+    FL3.ArrAirport = "Budapest"
+    FL3.DepTimeM= 17*60
+    FL3.ArrTimeM = 19.25*60
+    FL3.Pax = 140
     # creates fourth flight with some values
     FL4 = Flight.Flight()
-    FL4.dep = "Menorca"
-    FL4.arr = "Barcelona"
-    FL4.time_dep = 2060
-    FL4.time_arr = 2360
-    FL4.passengers = 97
+    FL4.DepAirport = "Budapest"
+    FL4.ArrAirport = "Barcelona"
+    FL4.DepTimeM = 20*60
+    FL4.ArrTimeM = 23*60
+    FL4.Pax = 97
     # creates the airline
     Xica = Airline.Airline()
     Xica.name = "Xica Airline"
@@ -58,8 +56,8 @@ def createXicaAirline ():
     Airline.add_operation(Xica, FL3)
     Airline.add_operation(Xica, FL4)
     return Xica
-    # main
-Z.show_airline(Z)
-Z.add_aircraft()
-Z.add_operation()
-
+# main
+print ("Phase1 test program")
+A = createXicaAirline()
+Airline.show_airline(A)
+print ("Phase1 test program end")

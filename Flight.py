@@ -1,4 +1,5 @@
-from Aircraft import x.MaxCap
+import Aircraft
+a = Aircraft.Aircraft()
 class Flight:
     '''define all "selfs" from the Flight class'''
     def __init__(self):
@@ -11,6 +12,7 @@ class Flight:
         self.Pax = ""
         self.TotalTime = ""
         self.d = ""
+        self.MaxCap = 0
 def show_flight(f):
     '''A print of everything contained in (flight)'''
     print(f.DepAirport,f.ArrAirport,f.DepTimeH,":",f.DepTimeM,f.ArrTimeH,":",f.ArrTimeM,f.Pax)
@@ -24,11 +26,13 @@ def delay_flight(f,d):
     else:
         print("FALSE")
 def fits_flight_in_aircraft(f,a):
-    '''If Pax is superior to MaxCap it means that there are more pasengers than seats'''
-    if (x.MaxCap - f.Pax) >= 0:
+    '''If Pax is superior to MaxCap it means that there are more passengers than seats'''
+    f.MaxCap = a.MaxCap
+    if f.MaxCap <= f.Pax:
         print("TRUE")
     else:
         print("FALSE")
+
 def fuel(f):
     '''gallons = fuel use * duration of the flight + a safety 15%
     We convert the total minutes in hours and multiply it by the fuel use/h'''

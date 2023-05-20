@@ -1,32 +1,41 @@
+from Flight import *
+from Aircraft import *
+
+
+# definition of the class ailine
 class Airline:
-    def init(self):
+    def __init__(self):
         self.name = ""
         self.fleet = []
         self.operations = []
         self.schedule = []
 
+
+# Prints on the screen the data of the airline, including all the fleet and the operations
 def show_airline(a):
-    """Prints on the screen the data of the airline"""
-    print("Airline name: ", a.name)
-    print("Fleet: ", a.fleet)
-    print("Flights: ", a.operations)
+    print(f"Airline Name: {a.name}")
+    print("Fleet:")
+    for ac in a.fleet:
+        print(f"\t{ac.Callsign}: ({ac.Type} with {ac.MaxCap} seats)")
+    print("Operations:")
+    for f in a.operations:
+        print(
+            f"\t{f.DepAirport} - {f.ArrAirport}, {f.DepTimeM // 60}:{f.DepTimeM % 60} - {f.ArrTimeM // 60}:{f.ArrTimeM % 60}, with {f.Pax} passengers")
 
-def add_aircraft (a, ac):
-    """Input: airline (a), aircraft (ac). Output: True/False
-    Adds the aircraft to the fleet. Return true if is added correctly, False if not."""
-    for i in a.fleet:
-        if i == ac:
-            a.fleet.append(ac)
-            return True
-        return False
 
-def add_operation (a, f):
-    """Input: airline (a), flight (f). Output: True/False.
-    Adds a flight to the operations list. Return true if is added correctly, false if not.
-    """
-    for i in a.operations:
-        if i.departureairport == f.departureairport and i.arrivalairport == f.arrivalairport and i.departuretime == f.departuretime:
+# adds the aircraft ac to the fleet of airline a. Returns False if the aircraft (same callsign) is already in the fleet, True in case it can be added correctly.
+def add_aircraft(a, ac):
+    for aircraft in a.fleet:
+        if aircraft == ac:
             return False
-        else:
-            a.operations.append(f)
-            return True
+    a.fleet.append(ac)
+    return True
+
+
+#  adds the flight f to the operations of airline a. Returns False if the flight is already in the operations list, True in case it can be added correctly. An operation is repeated if the origin, destination and departure time are the same.
+def add_operation(a, f):
+    for op in a.operations:
+        if (op.DepAirport == f.DepAirport) and (op.ArrAirport == f.ArrAirport) and (op.DepTimeM == f.DepTimeM) and (op.ArrTimeM == f.ArrTimeM) and (op.Pax == f.Pax):
+            return False
+    a.operations.append(f)
+    return True

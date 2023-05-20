@@ -1,7 +1,9 @@
 import Flight
+import Aircraft
 
 y = Flight.Flight()
 z = Flight.Flight()
+x = Aircraft.Aircraft()
 y.DepAirport = "BCN"
 y.ArrAirport = "PMI"
 y.DepTimeH = 2
@@ -14,4 +16,4 @@ z.d = 400
 Flight.show_flight(y)
 Flight.flight_duration(y)
 Flight.delay_flight(y,z)
-
+Flight.fits_flight_in_aircraft(y,z)

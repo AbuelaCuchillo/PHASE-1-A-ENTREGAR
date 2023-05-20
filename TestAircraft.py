@@ -1,4 +1,4 @@
-import Aircraft
+from Aircraft import Aircraft
 
 x=Aircraft.Aircraft()
 x.Callsign = "ASD"
